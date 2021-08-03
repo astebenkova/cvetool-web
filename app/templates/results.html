@@ -2,13 +2,18 @@
     <head>
         <meta charset="utf-8">
         <title>Cvetool image scanner</title>
+        <style>
+            p { text-align: justify; }
+        </style>
     </head>
     <body>
-        <form action="" method="post" novalidate>
+        <form action="" method="post">
             {{ form.hidden_tag() }}
+            {{ form.csrf_token }}
             <p>
                 {{ form.image.label }} {{ form.image(size=100, placeholder="Image") }}<br><br>
-                {{ form.processors.label }} {{ form.processors(rows=1, multiple=True) }}<br>
+                {{ form.processors.label }} {{ form.processors(rows=4, multiple=True) }}<br><br>
+                {{ form.representers.label }} {{ form.representers(rows=2, multiple=False) }}<br>
             </p>
             <p>{{ form.submit() }}</p>
         </form>
