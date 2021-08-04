@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, SelectMultipleField, SelectField
-from wtforms.validators import InputRequired, Regexp
+from wtforms.validators import InputRequired
 
 
 class ImageForm(FlaskForm):

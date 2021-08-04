@@ -11,16 +11,23 @@ cvetool_path = "/home/arina/Projects/mirantis/airship/docker-image-scanner/venv/
 @app.route("/", methods=["GET", "POST"])
 def scan():
     scan_result = ""
+    error = ""
     form = ImageForm()
     if request.method == "POST":
         if form.validate_on_submit():
             image = request.form["image"]
             processors = str(form.processors.data).replace("[", "").replace("]", "").replace("'", "").replace(" ", "")
             representers = request.form["representers"]
-            scan_result = subprocess.check_output("{} --path ~/nvd.db --representers {} --processors {} {}"
-                                                  .format(cvetool_path, representers, processors, image),
-                                                  stderr=subprocess.STDOUT, shell=True,
-                                                  universal_newlines=True).replace('\n', '<br>')
+            try:
+                scan_result = subprocess.check_output("{} --path ~/nvd.db --representers {} --processors {} {}"
+                                                      .format(cvetool_path, representers, processors, image),
+                                                      stderr=subprocess.STDOUT, shell=True,
+                                                      universal_newlines=True)
+                if representers == "HumanMirrored":
+                    scan_result = scan_result.replace('\n', '<br>')
+            except subprocess.CalledProcessError:
+                error = "Ooops, seems your image is incorrect or no processors were specified."
         else:
-            scan_result = str(form.errors)
-    return render_template("results.html", form=form, message=scan_result)
+            error = str(form.errors)
+
+    return render_template("results.html", form=form, message=scan_result, error=error)

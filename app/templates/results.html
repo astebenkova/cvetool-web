@@ -11,15 +11,18 @@
             {{ form.hidden_tag() }}
             {{ form.csrf_token }}
             <p>
-                {{ form.image.label }} {{ form.image(size=100, placeholder="Image") }}<br><br>
-                {{ form.processors.label }} {{ form.processors(rows=4, multiple=True) }}<br><br>
-                {{ form.representers.label }} {{ form.representers(rows=2, multiple=False) }}<br>
+                {{ form.image.label }}: {{ form.image(size=50, placeholder="Image") }}<br><br>
+                {{ form.processors.label }}: {{ form.processors(rows=4, multiple=True) }}<br><br>
+                {{ form.representers.label }}: {{ form.representers(rows=2, multiple=False) }}<br><br>
             </p>
             <p>{{ form.submit() }}</p>
         </form>
         <div>
             {% if message %}
-                <p>{{ message|safe }}</p>
+                <p style="white-space: pre;">{{ message|safe }}</p>
+            {% endif %}
+            {% if error %}
+                <p style="color: red;"><strong>{{ error|safe }}</strong></p>
             {% endif %}
         </div>
     </body>
