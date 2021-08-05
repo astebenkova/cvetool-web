@@ -5,8 +5,6 @@ import subprocess
 app = Flask(__name__)
 app.config.from_object("app.config.Config")
 
-cvetool_path = "/home/arina/Projects/mirantis/airship/docker-image-scanner/venv/bin/cvetool"
-
 
 @app.route("/", methods=["GET", "POST"])
 def scan():
@@ -19,8 +17,8 @@ def scan():
             processors = str(form.processors.data).replace("[", "").replace("]", "").replace("'", "").replace(" ", "")
             representers = request.form["representers"]
             try:
-                scan_result = subprocess.check_output("{} --path ~/nvd.db --representers {} --processors {} {}"
-                                                      .format(cvetool_path, representers, processors, image),
+                scan_result = subprocess.check_output("cvetool --path /etc/cvetool/nvd.db --representers {} --processors {} {}"
+                                                      .format(representers, processors, image),
                                                       stderr=subprocess.STDOUT, shell=True,
                                                       universal_newlines=True)
                 if representers == "HumanMirrored":
