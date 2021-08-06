@@ -12,9 +12,10 @@ pycodestyle = "*"
 python-ranges = "==0.1.3"
 PyYAML = "==5.4.1"
 GitPython = "==3.1.14"
-gunicorn = "*"
+gunicorn = "==20.1.0"
 Flask = "*"
 Flask-WTF = "==0.15.1"
+flask-bootstrap = "*"
 
 [dev-packages]
 

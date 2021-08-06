@@ -11,5 +11,4 @@ class ImageForm(FlaskForm):
                                                             ("Clairv4Processor", "Clairv4Processor")],
                                      default=["PaclairProcessor", "LabelProcessor", "LanguagePackagesProcessor"])
     representers = SelectField("Representers", choices=[("DetailedHTML", "DetailedHTML"),
-                                                        ("HumanMirrored", "HumanMirrored")], default="HumanMirrored")
-    submit = SubmitField("Run scan")
+                                                        ("HumanMirrored", "HumanMirrored")], default="DetailedHTML")
