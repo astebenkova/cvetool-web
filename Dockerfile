@@ -2,7 +2,6 @@ FROM ubuntu:focal
 
 ADD id_rsa /root/.ssh/id_rsa
 
-ARG DB_URL=https://artifactory.mcp.mirantis.net/artifactory/binary-dev-local/mirantis/security/docker-image-scanner-data/nvd.db
 ARG CVETOOL_REPO=ssh://zuul-ci-robot@gerrit.mcp.mirantis.com:29418/mcp-ci/docker-image-scanner
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -18,7 +17,6 @@ RUN chmod 600 /root/.ssh/id_rsa && \
     cd /scanner && pip3 install --no-cache-dir -r requirements.txt && python3 setup.py install && \
     mkdir /etc/cvetool && cp etc/config.cfg.sample /etc/cvetool/config.cfg && \
     sed -i 's/clair_severity = dist_severity/clair_severity = NVD_cvssv3/g' /etc/cvetool/config.cfg && \
-    wget "${DB_URL}" -O /etc/cvetool/nvd.db && \
     rm -rf /root/.ssh/id_rsa /scanner
 
 WORKDIR /cvetool-web
