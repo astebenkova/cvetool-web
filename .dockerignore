@@ -1,3 +1,5 @@
 README.md
 .gitignore
 Dockerfile
+.idea/
+__pycache__/

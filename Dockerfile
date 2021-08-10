@@ -7,7 +7,7 @@ ARG CVETOOL_REPO=ssh://zuul-ci-robot@gerrit.mcp.mirantis.com:29418/mcp-ci/docker
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
-    apt-get install -yq python3 python3-pip git wget && \
+    apt-get install --no-install-recommends -yq python3 python3-pip git wget ssh && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install cvetool
