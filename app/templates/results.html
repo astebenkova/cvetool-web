@@ -24,9 +24,7 @@
 <div class="container" style="font-family:Hahmlet, serif;">
     {% if message %}
     <div>
-        <p{% if request.form["representers"] == 'HumanMirrored' %} style="white-space: pre;"{% endif %}>
-            {{ message|safe }}
-        </p>
+        <pre>{{ message|safe }}</pre>
     </div>
     {% endif %}
     {% if error %}

@@ -21,8 +21,6 @@ def scan():
                                                       .format(representers, processors, image),
                                                       stderr=subprocess.STDOUT, shell=True,
                                                       universal_newlines=True)
-                if representers == "HumanMirrored":
-                    scan_result = scan_result.replace('\n', '<br>')
             except subprocess.CalledProcessError:
                 error = "Ooops, seems your image is incorrect or no processors were specified."
         else:

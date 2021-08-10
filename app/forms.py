@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, SelectMultipleField, SelectField
+from wtforms import StringField, SelectMultipleField, SelectField
 from wtforms.validators import InputRequired
 
 
@@ -10,5 +10,5 @@ class ImageForm(FlaskForm):
                                                             ("LanguagePackagesProcessor", "LanguagePackagesProcessor"),
                                                             ("Clairv4Processor", "Clairv4Processor")],
                                      default=["PaclairProcessor", "LabelProcessor", "LanguagePackagesProcessor"])
-    representers = SelectField("Representers", choices=[("DetailedHTML", "DetailedHTML"),
-                                                        ("HumanMirrored", "HumanMirrored")], default="DetailedHTML")
+    representers = SelectField("Representers", choices=[("DetailedHTML", "DetailedHTML"), ("HumanMirrored", "HumanMirrored"),
+                                                        ("Detailed", "Detailed")], default="HumanMirrored")
