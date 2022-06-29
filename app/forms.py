@@ -8,6 +8,7 @@ class ImageForm(FlaskForm):
     processors = SelectMultipleField("Processors", choices=[("PaclairProcessor", "PaclairProcessor"),
                                                             ("LabelProcessor", "LabelProcessor"),
                                                             ("LanguagePackagesProcessor", "LanguagePackagesProcessor"),
+                                                            ("GoBinariesProcessor", "GoBinariesProcessor"),
                                                             ("Clairv4Processor", "Clairv4Processor")],
                                      default=["PaclairProcessor", "LabelProcessor", "LanguagePackagesProcessor"])
     representers = SelectField("Representers", choices=[("HumanMirrored", "HumanMirrored"),("Detailed", "Detailed")], default="HumanMirrored")

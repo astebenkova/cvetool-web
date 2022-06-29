@@ -17,7 +17,10 @@ def scan():
             processors = str(form.processors.data).replace("[", "").replace("]", "").replace("'", "").replace(" ", "")
             representers = request.form["representers"]
             try:
-                scan_result = subprocess.check_output("cvetool --path /etc/cvetool/nvd.db --representers {} --processors {} {}"
+                scan_result = subprocess.check_output("cvetool --path /etc/cvetool/nvd.db \
+                                                               --configure-report /etc/cvetool/ignore.json \
+                                                               --representers {} \
+                                                               --processors {} {}"
                                                       .format(representers, processors, image),
                                                       stderr=subprocess.STDOUT, shell=True,
                                                       universal_newlines=True)
