@@ -1,0 +1,15 @@
+attachments:
+- color: "#6aa84f"
+  blocks:
+    - type: "header"
+      text:
+        type: "plain_text"
+        text: "New Release Tag: ${{ env.RELEASE_TAG }} :tada:"
+        emoji: true
+    - type: "divider"
+    - type: "section"
+      fields:
+        - type: "mrkdwn"
+          text: "*Repository*\n <${{ env.GITHUB_SERVER_URL }}/${{ env.GITHUB_REPO }}/tree/${{ env.RELEASE_TAG }}|${{ env.GITHUB_REPO }}>"
+        - type: "mrkdwn"
+          text: "*Tag*\n<${{ env.GITHUB_SERVER_URL }}/${{ env.GITHUB_REPO }}/releases/tag/${{ env.RELEASE_TAG }}|${{ env.RELEASE_TAG }}>"
